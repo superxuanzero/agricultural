@@ -34,15 +34,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ChooseAreaFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ChooseAreaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-
 public class ChooseAreaFragment extends Fragment {
     public static final int LEVEL_PROVINCE=0;
     public static final int LEVEL_CITY=1;

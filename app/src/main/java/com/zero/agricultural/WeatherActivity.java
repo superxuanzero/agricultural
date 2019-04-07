@@ -91,6 +91,8 @@ public class WeatherActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+        swipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipe_refresh);
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
         SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather",null);
         if (weatherString!=null){
@@ -183,6 +185,18 @@ public class WeatherActivity extends AppCompatActivity {
                             Toast.makeText(WeatherActivity.this,"获取天气信息失败",
                                     Toast.LENGTH_SHORT).show();
                         }
+                        swipeRefresh.setRefreshing(false);
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call call,IOException e){
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(WeatherActivity.this,"获取天气信息失败",Toast.LENGTH_SHORT).show();
                         swipeRefresh.setRefreshing(false);
                     }
                 });
